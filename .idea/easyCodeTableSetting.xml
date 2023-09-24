@@ -445,7 +445,7 @@
               <option name="name" value="SysUser" />
               <option name="preName" value="c_" />
               <option name="saveModelName" value="crux-framework" />
-              <option name="savePackageName" value="" />
+              <option name="savePackageName" value="com.crux" />
               <option name="savePath" value="./crux-framework/src/main/java/com/crux" />
               <option name="templateGroupName" value="MybatisPlus" />
             </TableInfoDTO>

@@ -11,5 +11,4 @@ import com.crux.entity.domain.entity.User;
  * @since 2023-09-04 16:23:37
  */
 public interface UserMapper extends BaseMapper<User> {
-
 }

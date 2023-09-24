@@ -1,11 +1,11 @@
 package com.crux.controller;
 
+import com.crux.constants.SystemConstants;
 import com.crux.entity.domain.ResponseResult;
+import com.crux.entity.domain.entity.Comment;
 import com.crux.service.CommentService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.annotation.RequestScope;
 
 /**
@@ -18,8 +18,18 @@ public class CommentController {
 
     private final CommentService commentService;
 
-    @PostMapping("/commonList")
+    @GetMapping("/commentList")
     public ResponseResult commonList(Long articleId, Integer pageNum, Integer pageSize){
-        return commentService.commonList(articleId, pageNum, pageSize);
+        return commentService.commonList(SystemConstants.ARTICLE_COMMENT,articleId, pageNum, pageSize);
+    }
+
+    @PostMapping
+    public ResponseResult addComment(@RequestBody Comment comment){
+        return commentService.addComment(comment);
+    }
+
+    @GetMapping("/linkCommentList")
+    public ResponseResult linkCommentList(Integer pageNum, Integer pageSize){
+        return commentService.commonList(SystemConstants.LINK_COMMENT,null, pageNum, pageSize);
     }
 }

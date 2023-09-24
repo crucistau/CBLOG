@@ -1,10 +1,12 @@
 package com.crux.entity.vo;
 
+import com.crux.entity.domain.entity.Comment;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Date;
+import java.util.List;
 
 /**
  * @author crucistau
@@ -31,4 +33,5 @@ public class CommentVo {
     private Date createTime;
 
     private String username;
+    private List<CommentVo> children;
 }
