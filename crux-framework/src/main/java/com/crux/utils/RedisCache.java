@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.*;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
@@ -11,9 +12,9 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class RedisCache
 {
-    @Autowired
+    @Resource
     public RedisTemplate redisTemplate;
-    @Autowired
+    @Resource
     public StringRedisTemplate stringRedisTemplate;
     /**
      * 缓存基本的对象，Integer、String、实体类等
@@ -138,6 +139,11 @@ public class RedisCache
         }
         return setOperation;
     }
+
+    public void incrementCacheMapValue(String key, String hKey, int value){
+        redisTemplate.opsForHash().increment(key, hKey, value);
+    }
+
 
     /**
      * 获得缓存的set

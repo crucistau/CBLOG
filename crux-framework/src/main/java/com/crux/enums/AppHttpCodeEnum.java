@@ -13,6 +13,9 @@ public enum AppHttpCodeEnum {
     REQUIRE_USERNAME(504, "必需填写用户名"),
     DATA_EMPTY(501,"没有信息"),
     LOGIN_ERROR(505,"用户名或密码错误"),
+    USERNAME_NOT_NULL(508,"用户名不能为空"),
+    PASSWORD_NOT_NULL(510,"密码不能为空"),
+    EMAIL_NOT_NULL(509,"邮箱不能为空"),
     CONTENT_NOT_NULL(500, "内容不能为空");
 
 

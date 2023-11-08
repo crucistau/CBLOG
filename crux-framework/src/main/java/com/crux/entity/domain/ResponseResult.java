@@ -6,6 +6,10 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import java.io.Serializable;
 
 /**
+ * 注解的作用
+ *  是一个来自 Jackson 库的注解，用于控制 JSON 序列化过程中的包含逻辑。
+ *  当你将这个注解添加到类或字段上时，它会告诉 Jackson 在序列化对象为 JSON 时，如果该字段的值为 null，就不要包含该字段。
+ *  这样可以减少生成的 JSON 的大小，并保持输出的清洁，只包含非空的信息。
  * @author crucistau
  **/
 @JsonInclude(JsonInclude.Include.NON_NULL)

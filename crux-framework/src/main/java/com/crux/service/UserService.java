@@ -1,6 +1,7 @@
 package com.crux.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.crux.entity.domain.ResponseResult;
 import com.crux.entity.domain.entity.User;
 
 
@@ -12,6 +13,11 @@ import com.crux.entity.domain.entity.User;
  */
 public interface UserService extends IService<User> {
 
+    ResponseResult userInfo();
+
+    ResponseResult updateUserInfo(User user);
+
+    ResponseResult register(User user);
 }
 
 
