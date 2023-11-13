@@ -3,7 +3,9 @@ package com.crux.controller;
 import com.crux.constants.SystemConstants;
 import com.crux.entity.domain.ResponseResult;
 import com.crux.entity.domain.entity.Comment;
+import com.crux.entity.dto.AddCommentDto;
 import com.crux.service.CommentService;
+import com.crux.utils.BeanCopyUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.annotation.RequestScope;
@@ -24,7 +26,8 @@ public class CommentController {
     }
 
     @PostMapping
-    public ResponseResult addComment(@RequestBody Comment comment){
+    public ResponseResult addComment(@RequestBody AddCommentDto commentDto){
+        Comment comment = BeanCopyUtils.copyBean(commentDto, Comment.class);
         return commentService.addComment(comment);
     }
 
