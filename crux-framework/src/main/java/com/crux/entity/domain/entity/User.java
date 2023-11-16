@@ -6,6 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import com.baomidou.mybatisplus.annotation.TableName;
+
+import javax.validation.constraints.NotNull;
+
 /**
  * 用户表(SysUser)表实体类
  *
@@ -22,6 +25,7 @@ public class User {
     private Long id;
 
     //用户名
+    @NotNull(message = "用户名不能为空")
     private String userName;
     //昵称
     private String nickName;

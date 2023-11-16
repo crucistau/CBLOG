@@ -15,6 +15,7 @@ import com.crux.service.LoginService;
 import com.crux.utils.BeanCopyUtils;
 import com.crux.utils.JwtUtil;
 import com.crux.utils.RedisCache;
+import com.crux.utils.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -52,7 +53,7 @@ public class LoginServiceImpl  extends ServiceImpl<UserMapper, User> implements 
         LoginUser loginUser = (LoginUser) authenticate.getPrincipal();
         String userId = loginUser.getUser().getId().toString();
         String jwt = JwtUtil.createJWT(userId);
-        redisCache.setCacheObject(RedisConstants.BLOG_LOGIN + userId,loginUser);
+        redisCache.setCacheObject(RedisConstants.ADMIN_LOGIN + userId,loginUser);
 
         //将token和userinfo信息封装返回
         //把user转换成userinfo返回
@@ -65,10 +66,9 @@ public class LoginServiceImpl  extends ServiceImpl<UserMapper, User> implements 
     @Override
     public ResponseResult logOut() {
         //获取token并解析获取userId（同一个线程只能拿到他自己的数据）
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        LoginUser loginUser = (LoginUser) authentication.getPrincipal();
+        Long userId = SecurityUtils.getUserId();
         //删除redis中的用户信息
-        redisCache.deleteObject(RedisConstants.BLOG_LOGIN + loginUser.getUser().getId());
-        return null;
+        redisCache.deleteObject(RedisConstants.ADMIN_LOGIN + userId);
+        return ResponseResult.okResult();
     }
 }

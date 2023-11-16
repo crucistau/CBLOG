@@ -1,5 +1,6 @@
 package com.crux.utils;
 
+
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
@@ -109,6 +110,4 @@ public class JwtUtil {
                 .parseClaimsJws(jwt)
                 .getBody();
     }
-
-
 }

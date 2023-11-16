@@ -1,7 +1,9 @@
 package com.crux.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.crux.entity.domain.ResponseResult;
 import com.crux.entity.domain.entity.Tag;
+import com.crux.entity.dto.TagListDto;
 
 
 /**
@@ -12,6 +14,7 @@ import com.crux.entity.domain.entity.Tag;
  */
 public interface TagService extends IService<Tag> {
 
+    ResponseResult pageTagList(Integer pageNum, Integer pageSize, TagListDto tagListDto);
 }
 
 
